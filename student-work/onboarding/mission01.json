@@ -1,0 +1,6 @@
+{
+  "answer": {
+    "question": "At 20m/s, can the elevator produce a nose down moment of at least [requirement]? Initial angular acceleration is a change in rotation rate, not pitch angle or takeoff distance. Equality meets a minimum requirement."
+  },
+  "reflection": {}
+}
