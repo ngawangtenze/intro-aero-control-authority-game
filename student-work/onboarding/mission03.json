@@ -6,7 +6,7 @@
     "explanation2": "Both the slope and demand are negative because positive elevator deflection produces a negative pitching-moment coefficient change, and this task specifically requests a negative change. Dividing demand by slope cancels the negative signs and gives a positive number in radians, since the slope's units are 'coefficient change per radian.'"
   },
   "reflection": {
-    "confirmedFor": "",
+    "confirmedFor": "f2e2351a-b34f-49f0-b3bf-75f54c4fe6f5",
     "observation": "At demand −0.25, the required deflection was 13.6419°, which fits within the 18° usable positive travel with 4.3581° remaining. At demand −0.35, the required deflection was 19.0986 deg, which exceeds the usable travel.",
     "change": "I confirmed that both demands correctly produced positive required deflections, since the two negative signs (slope and demand) cancel consistently. I also confirmed that a larger magnitude demand (−0.35 vs −0.25) requires proportionally more elevator deflection, since the relationship is linear (deflection = demand/slope).",
     "result": "supported",
@@ -78,7 +78,7 @@
       "note": "The required deflection is +0.2381 rad, which converts to +13.6419°. Since this is positive and falls between 0° and the 18° usable limit, it is within positive travel. The positive sign confirms the elevator must move in the positive direction to produce this negative coefficient demand ."
     },
     "-0.35": {
-      "evidence": "0,3333",
+      "evidence": "0.3333",
       "conclusion": "Outside declared positive travel",
       "note": "The required deflection is 0.3333 rad, which converts to +19.0986 deg. Since this falls beyond 18° usable limit, it is not within the positive travel. "
     }
@@ -170,6 +170,26 @@
         "evidence": "0,3333",
         "note": "The required deflection is 0.3333 rad, which converts to +19.0986 deg. Since this falls beyond 18° usable limit, it is not within the positive travel. ",
         "draftSnapshot": "{\"evidence\":\"0,3333\",\"conclusion\":\"Outside declared positive travel\",\"note\":\"The required deflection is 0.3333 rad, which converts to +19.0986 deg. Since this falls beyond 18° usable limit, it is not within the positive travel. \"}"
+      },
+      {
+        "correct": false,
+        "feedback": "Re-read “Required deflection”. Record its value in the labelled units (numbers within ±0.0001), then compare it with the criterion. Check the sign first, then compare the required positive deflection with the usable travel.",
+        "attemptId": "f2e2351a-b34f-49f0-b3bf-75f54c4fe6f5",
+        "at": "2026-09-13T07:44:25.493Z",
+        "conclusion": "Outside declared positive travel",
+        "evidence": "0,3333",
+        "note": "The required deflection is 0.3333 rad, which converts to +19.0986 deg. Since this falls beyond 18° usable limit, it is not within the positive travel. ",
+        "draftSnapshot": "{\"evidence\":\"0,3333\",\"conclusion\":\"Outside declared positive travel\",\"note\":\"The required deflection is 0.3333 rad, which converts to +19.0986 deg. Since this falls beyond 18° usable limit, it is not within the positive travel. \"}"
+      },
+      {
+        "correct": true,
+        "feedback": "Your recorded value and choice match the calculation: Outside declared positive travel. Required deflection: 0.3333 rad. 19.0986 > 18 Your instructor will review your explanation.",
+        "attemptId": "f2e2351a-b34f-49f0-b3bf-75f54c4fe6f5",
+        "at": "2026-09-13T07:44:43.826Z",
+        "conclusion": "Outside declared positive travel",
+        "evidence": "0.3333",
+        "note": "The required deflection is 0.3333 rad, which converts to +19.0986 deg. Since this falls beyond 18° usable limit, it is not within the positive travel. ",
+        "draftSnapshot": "{\"evidence\":\"0.3333\",\"conclusion\":\"Outside declared positive travel\",\"note\":\"The required deflection is 0.3333 rad, which converts to +19.0986 deg. Since this falls beyond 18° usable limit, it is not within the positive travel. \"}"
       }
     ]
   },
@@ -209,6 +229,49 @@
       "inputs": {
         "demand": -0.25
       }
+    },
+    "-0.35": {
+      "attemptId": "f2e2351a-b34f-49f0-b3bf-75f54c4fe6f5",
+      "at": "2026-09-13T07:44:43.826Z",
+      "note": "The required deflection is 0.3333 rad, which converts to +19.0986 deg. Since this falls beyond 18° usable limit, it is not within the positive travel. ",
+      "evidence": "0.3333",
+      "conclusion": "Outside declared positive travel",
+      "readouts": [
+        {
+          "label": "Required deflection",
+          "expression": "demand/slope",
+          "unit": "rad",
+          "value": 0.3333333333333333
+        },
+        {
+          "label": "Required deflection",
+          "expression": "demand/slope*180/pi",
+          "unit": "deg",
+          "value": 19.098593171027442
+        },
+        {
+          "label": "Usable positive travel",
+          "expression": "usableLimit",
+          "unit": "deg",
+          "value": 18
+        },
+        {
+          "label": "Remaining positive travel",
+          "expression": "usableLimit-demand/slope*180/pi",
+          "unit": "deg",
+          "value": -1.0985931710274421
+        }
+      ],
+      "inputs": {
+        "demand": -0.35
+      }
     }
+  },
+  "delivery": {
+    "status": "sent",
+    "snapshot": "{\"answer\":{\"slope\":\"-1.05\",\"demand\":\"-0.25\",\"usableLimit\":\"18\",\"explanation2\":\"Both the slope and demand are negative because positive elevator deflection produces a negative pitching-moment coefficient change, and this task specifically requests a negative change. Dividing demand by slope cancels the negative signs and gives a positive number in radians, since the slope's units are 'coefficient change per radian.'\"},\"attempt\":\"f2e2351a-b34f-49f0-b3bf-75f54c4fe6f5\",\"observations\":{\"-0.25\":{\"attemptId\":\"f2e2351a-b34f-49f0-b3bf-75f54c4fe6f5\",\"at\":\"2026-09-13T07:35:21.827Z\",\"note\":\"The required deflection is +0.2381 rad, which converts to +13.6419°. Since this is positive and falls between 0° and the 18° usable limit, it is within positive travel. The positive sign confirms the elevator must move in the positive direction to produce this negative coefficient demand .\",\"evidence\":\"0.2381\",\"conclusion\":\"Within positive travel\",\"readouts\":[{\"label\":\"Required deflection\",\"expression\":\"demand/slope\",\"unit\":\"rad\",\"value\":0.23809523809523808},{\"label\":\"Required deflection\",\"expression\":\"demand/slope*180/pi\",\"unit\":\"deg\",\"value\":13.6418522650196},{\"label\":\"Usable positive travel\",\"expression\":\"usableLimit\",\"unit\":\"deg\",\"value\":18},{\"label\":\"Remaining positive travel\",\"expression\":\"usableLimit-demand/slope*180/pi\",\"unit\":\"deg\",\"value\":4.358147734980401}],\"inputs\":{\"demand\":-0.25}}},\"interpretations\":{\"-0.25\":[{\"correct\":true,\"feedback\":\"Your recorded value and choice match the calculation: Within positive travel. Required deflection: 0.2381 rad. 13.6419 < 18 Your instructor will review your explanation.\",\"attemptId\":\"f2e2351a-b34f-49f0-b3bf-75f54c4fe6f5\",\"at\":\"2026-09-13T07:35:21.827Z\",\"conclusion\":\"Within positive travel\",\"evidence\":\"0.2381\",\"note\":\"The required deflection is +0.2381 rad, which converts to +13.6419°. Since this is positive and falls between 0° and the 18° usable limit, it is within positive travel. The positive sign confirms the elevator must move in the positive direction to produce this negative coefficient demand .\",\"draftSnapshot\":\"{\\\"evidence\\\":\\\"0.2381\\\",\\\"conclusion\\\":\\\"Within positive travel\\\",\\\"note\\\":\\\"The required deflection is +0.2381 rad, which converts to +13.6419°. Since this is positive and falls between 0° and the 18° usable limit, it is within positive travel. The positive sign confirms the elevator must move in the positive direction to produce this negative coefficient demand .\\\"}\"}],\"-0.35\":[{\"correct\":false,\"feedback\":\"Re-read “Required deflection”. Record its value in the labelled units (numbers within ±0.0001), then compare it with the criterion. Check the sign first, then compare the required positive deflection with the usable travel.\",\"attemptId\":\"f2e2351a-b34f-49f0-b3bf-75f54c4fe6f5\",\"at\":\"2026-09-13T07:38:27.098Z\",\"conclusion\":\"Outside declared positive travel\",\"evidence\":\"0,3333\",\"note\":\"The required deflection is 0.3333 rad, which converts to +19.0986 deg. Since this falls beyond 18° usable limit, it is not within the positive travel. \",\"draftSnapshot\":\"{\\\"evidence\\\":\\\"0,3333\\\",\\\"conclusion\\\":\\\"Outside declared positive travel\\\",\\\"note\\\":\\\"The required deflection is 0.3333 rad, which converts to +19.0986 deg. Since this falls beyond 18° usable limit, it is not within the positive travel. \\\"}\"}]},\"reflection\":{\"confirmedFor\":\"\",\"observation\":\"At demand −0.25, the required deflection was 13.6419°, which fits within the 18° usable positive travel with 4.3581° remaining. At demand −0.35, the required deflection was 19.0986 deg, which exceeds the usable travel.\",\"change\":\"I confirmed that both demands correctly produced positive required deflections, since the two negative signs (slope and demand) cancel consistently. I also confirmed that a larger magnitude demand (−0.35 vs −0.25) requires proportionally more elevator deflection, since the relationship is linear (deflection = demand/slope).\",\"result\":\"supported\",\"limit\":\"I would need actual measured coefficient-change data at deflection angles close to the 18° limit itself, rather than assuming the same −1.05 per radian slope holds true there. \"}}",
+    "revision": "9525002a654373d0b1456cec6cf4d662907efcb0",
+    "url": "https://github.com/ngawangtenze/intro-aero-control-authority-game/commit/9525002a654373d0b1456cec6cf4d662907efcb0",
+    "at": "2026-09-13T07:43:11.510Z"
   }
 }
