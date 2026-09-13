@@ -1,0 +1,312 @@
+{
+  "answer": {
+    "assumption": "It assumes airflow at the elevator has the same speed as the undisturbed airflow.",
+    "consequence": "Overestimates available authority",
+    "ratio": "0.49",
+    "explanation4": "The original estimate assumes the air reaching the elevator moves at the same speed as the freestream flight speed (V), since the physics model uses V directly. If the actual local speed at the elevator is slower, the real available moment is smaller than the original estimate predicts, since moment scales with the square of speed."
+  },
+  "reflection": {
+    "confirmedFor": "d64ef73e-3a62-4216-b9cc-4bed5e870a1b",
+    "result": "supported",
+    "observation": "At factor 1, capacity was 4,002.48 N·m, margin 2,652.48 Nm. At factor 0.7, capacity was 1,961.2152 Nm, margin 611.2152 Nm. At factor 0.5, capacity 1,000.62, margin -349.38 Nm — insufficient. The claim fails somewhere between 0.7 and 0.5.\"",
+    "change": "I confirmed that the freestream-based capacity estimate cannot be safely reused once local airspeed drops enough — the sufficient-authority claim held at factors 1 and 0.7, but failed at 0.5.",
+    "limit": "I would need actual measured coefficient data (dCm) under disturbed flow conditions, since this experiment only varied speed while holding dCm fixed. If disturbed flow also reduces control effectiveness itself, the real available moment could be even lower than this speed-only model predicts"
+  },
+  "attempt": {
+    "id": "d64ef73e-3a62-4216-b9cc-4bed5e870a1b",
+    "missionVersion": "3.0.0",
+    "answerSnapshot": "{\"assumption\":\"It assumes airflow at the elevator has the same speed as the undisturbed airflow.\",\"consequence\":\"Overestimates available authority\",\"ratio\":\"0.49\",\"explanation4\":\"The original estimate assumes the air reaching the elevator moves at the same speed as the freestream flight speed (V), since the physics model uses V directly. If the actual local speed at the elevator is slower, the real available moment is smaller than the original estimate predicts, since moment scales with the square of speed.\"}",
+    "at": "2026-09-13T08:08:16.839Z",
+    "result": {
+      "runnable": true,
+      "passed": true,
+      "checks": [
+        {
+          "field": "assumption",
+          "expected": "It assumes airflow at the elevator has the same speed as the undisturbed airflow.",
+          "message": "The original estimate substitutes flight speed for local elevator airspeed. This is a modeling assumption, not a verified fact about the aircraft.",
+          "tolerance": 0.000001,
+          "actual": "It assumes airflow at the elevator has the same speed as the undisturbed airflow.",
+          "passed": true
+        },
+        {
+          "field": "consequence",
+          "expected": "Overestimates available authority",
+          "message": "Slower local flow reduces this held-coefficient moment estimate.",
+          "tolerance": 0.000001,
+          "actual": "Overestimates available authority",
+          "passed": true
+        },
+        {
+          "field": "ratio",
+          "expected": 0.49,
+          "message": "Square the local-speed ratio while holding other terms fixed.",
+          "tolerance": 0.0001,
+          "actual": "0.49",
+          "passed": true
+        }
+      ],
+      "traces": [
+        {
+          "x": 0.5,
+          "supplied": 1000.62,
+          "reference": 1350
+        },
+        {
+          "x": 0.7,
+          "supplied": 1961.2151999999999,
+          "reference": 1350
+        },
+        {
+          "x": 0.85,
+          "supplied": 2891.7918000000004,
+          "reference": 1350
+        },
+        {
+          "x": 1,
+          "supplied": 4002.48,
+          "reference": 1350
+        }
+      ]
+    }
+  },
+  "history": [],
+  "caseDrafts": {
+    "1": {
+      "evidence": "2652.48",
+      "conclusion": "Requirement met",
+      "note": "At a local speed factor of 1, the local airspeed equals the freestream speed exactly, so the adjusted capacity (4,002.48 N m) is identical to the original capacity — no reduction occurs."
+    },
+    "0.7": {
+      "evidence": "611.2152",
+      "conclusion": "Requirement met",
+      "note": "At a local speed factor of 0.7, the local airspeed is 70% of freestream speed, so the adjusted capacity drops to 1,961.2152 N m — only 0.49 (0.7²) of the original 4,002.48 N m capacity, since moment scales with the square of speed."
+    },
+    "0.5": {
+      "evidence": "-349.38",
+      "conclusion": "Insufficient authority",
+      "note": "At a local speed factor of 0.5, the local airspeed is only half of freestream speed, so the adjusted capacity drops to 1,000.62 N m — just 0.25 (0.5²) of the original capacity. This is now below the 1,350 N m required moment, giving an adjusted margin of −349.38 N m."
+    }
+  },
+  "attempts": [
+    {
+      "id": "d64ef73e-3a62-4216-b9cc-4bed5e870a1b",
+      "missionVersion": "3.0.0",
+      "answerSnapshot": "{\"assumption\":\"It assumes airflow at the elevator has the same speed as the undisturbed airflow.\",\"consequence\":\"Overestimates available authority\",\"ratio\":\"0.49\",\"explanation4\":\"The original estimate assumes the air reaching the elevator moves at the same speed as the freestream flight speed (V), since the physics model uses V directly. If the actual local speed at the elevator is slower, the real available moment is smaller than the original estimate predicts, since moment scales with the square of speed.\"}",
+      "at": "2026-09-13T08:08:16.839Z",
+      "result": {
+        "runnable": true,
+        "passed": true,
+        "checks": [
+          {
+            "field": "assumption",
+            "expected": "It assumes airflow at the elevator has the same speed as the undisturbed airflow.",
+            "message": "The original estimate substitutes flight speed for local elevator airspeed. This is a modeling assumption, not a verified fact about the aircraft.",
+            "tolerance": 0.000001,
+            "actual": "It assumes airflow at the elevator has the same speed as the undisturbed airflow.",
+            "passed": true
+          },
+          {
+            "field": "consequence",
+            "expected": "Overestimates available authority",
+            "message": "Slower local flow reduces this held-coefficient moment estimate.",
+            "tolerance": 0.000001,
+            "actual": "Overestimates available authority",
+            "passed": true
+          },
+          {
+            "field": "ratio",
+            "expected": 0.49,
+            "message": "Square the local-speed ratio while holding other terms fixed.",
+            "tolerance": 0.0001,
+            "actual": "0.49",
+            "passed": true
+          }
+        ],
+        "traces": [
+          {
+            "x": 0.5,
+            "supplied": 1000.62,
+            "reference": 1350
+          },
+          {
+            "x": 0.7,
+            "supplied": 1961.2151999999999,
+            "reference": 1350
+          },
+          {
+            "x": 0.85,
+            "supplied": 2891.7918000000004,
+            "reference": 1350
+          },
+          {
+            "x": 1,
+            "supplied": 4002.48,
+            "reference": 1350
+          }
+        ]
+      }
+    }
+  ],
+  "view": {
+    "caseId": "0.5"
+  },
+  "interpretations": {
+    "1": [
+      {
+        "correct": true,
+        "feedback": "Your recorded value and choice match the calculation: Requirement met. Adjusted margin: 2,652.48 N m. 2,652.48 > 0 Your instructor will review your explanation.",
+        "attemptId": "d64ef73e-3a62-4216-b9cc-4bed5e870a1b",
+        "at": "2026-09-13T08:10:41.865Z",
+        "conclusion": "Requirement met",
+        "evidence": "2652.48",
+        "note": "At a local speed factor of 1, the local airspeed equals the freestream speed exactly, so the adjusted capacity (4,002.48 N m) is identical to the original capacity — no reduction occurs.",
+        "draftSnapshot": "{\"evidence\":\"2652.48\",\"conclusion\":\"Requirement met\",\"note\":\"At a local speed factor of 1, the local airspeed equals the freestream speed exactly, so the adjusted capacity (4,002.48 N m) is identical to the original capacity — no reduction occurs.\"}"
+      }
+    ],
+    "0.5": [
+      {
+        "correct": true,
+        "feedback": "Your recorded value and choice match the calculation: Insufficient authority. Adjusted margin: -349.38 N m. -349.38 < 0 Your instructor will review your explanation.",
+        "attemptId": "d64ef73e-3a62-4216-b9cc-4bed5e870a1b",
+        "at": "2026-09-13T08:14:52.820Z",
+        "conclusion": "Insufficient authority",
+        "evidence": "-349.38",
+        "note": "At a local speed factor of 0.7, the local airspeed is 70% of freestream speed, so the adjusted capacity drops to 1,961.2152 N m — only 0.49 (0.7²) of the original 4,002.48 N m capacity, since moment scales with the square of speed.",
+        "draftSnapshot": "{\"evidence\":\"-349.38\",\"conclusion\":\"Insufficient authority\",\"note\":\"At a local speed factor of 0.7, the local airspeed is 70% of freestream speed, so the adjusted capacity drops to 1,961.2152 N m — only 0.49 (0.7²) of the original 4,002.48 N m capacity, since moment scales with the square of speed.\"}"
+      },
+      {
+        "correct": true,
+        "feedback": "Your recorded value and choice match the calculation: Insufficient authority. Adjusted margin: -349.38 N m. -349.38 < 0 Your instructor will review your explanation.",
+        "attemptId": "d64ef73e-3a62-4216-b9cc-4bed5e870a1b",
+        "at": "2026-09-13T08:15:35.386Z",
+        "conclusion": "Insufficient authority",
+        "evidence": "-349.38",
+        "note": "At a local speed factor of 0.5, the local airspeed is only half of freestream speed, so the adjusted capacity drops to 1,000.62 N m — just 0.25 (0.5²) of the original capacity. This is now below the 1,350 N m required moment, giving an adjusted margin of −349.38 N m.",
+        "draftSnapshot": "{\"evidence\":\"-349.38\",\"conclusion\":\"Insufficient authority\",\"note\":\"At a local speed factor of 0.5, the local airspeed is only half of freestream speed, so the adjusted capacity drops to 1,000.62 N m — just 0.25 (0.5²) of the original capacity. This is now below the 1,350 N m required moment, giving an adjusted margin of −349.38 N m.\"}"
+      }
+    ],
+    "0.7": [
+      {
+        "correct": true,
+        "feedback": "Your recorded value and choice match the calculation: Requirement met. Adjusted margin: 611.2152 N m. 611.2152 > 0 Your instructor will review your explanation.",
+        "attemptId": "d64ef73e-3a62-4216-b9cc-4bed5e870a1b",
+        "at": "2026-09-13T08:15:04.705Z",
+        "conclusion": "Requirement met",
+        "evidence": "611.2152",
+        "note": "At a local speed factor of 0.7, the local airspeed is 70% of freestream speed, so the adjusted capacity drops to 1,961.2152 N m — only 0.49 (0.7²) of the original 4,002.48 N m capacity, since moment scales with the square of speed.",
+        "draftSnapshot": "{\"evidence\":\"611.2152\",\"conclusion\":\"Requirement met\",\"note\":\"At a local speed factor of 0.7, the local airspeed is 70% of freestream speed, so the adjusted capacity drops to 1,961.2152 N m — only 0.49 (0.7²) of the original 4,002.48 N m capacity, since moment scales with the square of speed.\"}"
+      }
+    ]
+  },
+  "observations": {
+    "1": {
+      "attemptId": "d64ef73e-3a62-4216-b9cc-4bed5e870a1b",
+      "at": "2026-09-13T08:10:41.865Z",
+      "note": "At a local speed factor of 1, the local airspeed equals the freestream speed exactly, so the adjusted capacity (4,002.48 N m) is identical to the original capacity — no reduction occurs.",
+      "evidence": "2652.48",
+      "conclusion": "Requirement met",
+      "readouts": [
+        {
+          "label": "Original capacity using flight speed",
+          "expression": "0.5*rho*V^2*S*c*dCm",
+          "unit": "N m",
+          "value": 4002.48
+        },
+        {
+          "label": "Capacity using local elevator airspeed",
+          "expression": "0.5*rho*(flowFactor*V)^2*S*c*dCm",
+          "unit": "N m",
+          "value": 4002.48
+        },
+        {
+          "label": "Required moment",
+          "expression": "1350",
+          "unit": "N m",
+          "value": 1350
+        },
+        {
+          "label": "Adjusted margin",
+          "expression": "0.5*rho*(flowFactor*V)^2*S*c*dCm-1350",
+          "unit": "N m",
+          "value": 2652.48
+        }
+      ],
+      "inputs": {
+        "flowFactor": 1
+      }
+    },
+    "0.5": {
+      "attemptId": "d64ef73e-3a62-4216-b9cc-4bed5e870a1b",
+      "at": "2026-09-13T08:15:35.386Z",
+      "note": "At a local speed factor of 0.5, the local airspeed is only half of freestream speed, so the adjusted capacity drops to 1,000.62 N m — just 0.25 (0.5²) of the original capacity. This is now below the 1,350 N m required moment, giving an adjusted margin of −349.38 N m.",
+      "evidence": "-349.38",
+      "conclusion": "Insufficient authority",
+      "readouts": [
+        {
+          "label": "Original capacity using flight speed",
+          "expression": "0.5*rho*V^2*S*c*dCm",
+          "unit": "N m",
+          "value": 4002.48
+        },
+        {
+          "label": "Capacity using local elevator airspeed",
+          "expression": "0.5*rho*(flowFactor*V)^2*S*c*dCm",
+          "unit": "N m",
+          "value": 1000.62
+        },
+        {
+          "label": "Required moment",
+          "expression": "1350",
+          "unit": "N m",
+          "value": 1350
+        },
+        {
+          "label": "Adjusted margin",
+          "expression": "0.5*rho*(flowFactor*V)^2*S*c*dCm-1350",
+          "unit": "N m",
+          "value": -349.38
+        }
+      ],
+      "inputs": {
+        "flowFactor": 0.5
+      }
+    },
+    "0.7": {
+      "attemptId": "d64ef73e-3a62-4216-b9cc-4bed5e870a1b",
+      "at": "2026-09-13T08:15:04.705Z",
+      "note": "At a local speed factor of 0.7, the local airspeed is 70% of freestream speed, so the adjusted capacity drops to 1,961.2152 N m — only 0.49 (0.7²) of the original 4,002.48 N m capacity, since moment scales with the square of speed.",
+      "evidence": "611.2152",
+      "conclusion": "Requirement met",
+      "readouts": [
+        {
+          "label": "Original capacity using flight speed",
+          "expression": "0.5*rho*V^2*S*c*dCm",
+          "unit": "N m",
+          "value": 4002.48
+        },
+        {
+          "label": "Capacity using local elevator airspeed",
+          "expression": "0.5*rho*(flowFactor*V)^2*S*c*dCm",
+          "unit": "N m",
+          "value": 1961.2151999999999
+        },
+        {
+          "label": "Required moment",
+          "expression": "1350",
+          "unit": "N m",
+          "value": 1350
+        },
+        {
+          "label": "Adjusted margin",
+          "expression": "0.5*rho*(flowFactor*V)^2*S*c*dCm-1350",
+          "unit": "N m",
+          "value": 611.2151999999999
+        }
+      ],
+      "inputs": {
+        "flowFactor": 0.7
+      }
+    }
+  }
+}
