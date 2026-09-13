@@ -1,0 +1,244 @@
+{
+  "answer": {
+    "equation": "deltaT * y",
+    "rudderEquation": "- deltaT * y",
+    "effector": "Rudder / vertical tail",
+    "explanation1": "The engine-out disturbance and rudder moment must have opposite signs because only an opposing moment can cancel the disturbance and bring the net yaw moment to zero — matching signs would add to the disturbance instead of balancing it."
+  },
+  "reflection": {
+    "confirmedFor": ""
+  },
+  "attempt": {
+    "id": "869ce6fc-5537-401b-ba22-112290995035",
+    "missionVersion": "3.1.0",
+    "answerSnapshot": "{\"equation\":\"deltaT * y\",\"rudderEquation\":\"- deltaT * y\",\"effector\":\"Rudder / vertical tail\",\"explanation1\":\"The engine-out disturbance and rudder moment must have opposite signs because only an opposing moment can cancel the disturbance and bring the net yaw moment to zero — matching signs would add to the disturbance instead of balancing it.\"}",
+    "at": "2026-09-13T04:17:15.066Z",
+    "result": {
+      "runnable": true,
+      "passed": true,
+      "checks": [
+        {
+          "studentExpression": "equation",
+          "variables": {
+            "deltaT": 0
+          },
+          "expected": 0,
+          "message": "Lost thrust 0 N at 3.1 m must give 0 N m signed nose-right disturbance.",
+          "tolerance": 0.0001,
+          "actual": 0,
+          "passed": true
+        },
+        {
+          "studentExpression": "equation",
+          "variables": {
+            "deltaT": 2400
+          },
+          "expected": 7440,
+          "message": "Lost thrust 2400 N at 3.1 m must give 7440 N m signed nose-right disturbance.",
+          "tolerance": 0.01,
+          "actual": 7440,
+          "passed": true
+        },
+        {
+          "studentExpression": "equation",
+          "variables": {
+            "deltaT": 4800
+          },
+          "expected": 14880,
+          "message": "Lost thrust 4800 N at 3.1 m must give 14880 N m signed nose-right disturbance.",
+          "tolerance": 0.01,
+          "actual": 14880,
+          "passed": true
+        },
+        {
+          "field": "effector",
+          "expected": "Rudder / vertical tail",
+          "message": "Check which control surface primarily controls yaw. This check does not assess your written explanation.",
+          "tolerance": 0.000001,
+          "actual": "Rudder / vertical tail",
+          "passed": true
+        },
+        {
+          "studentExpression": "rudderEquation",
+          "variables": {
+            "deltaT": 0
+          },
+          "expected": 0,
+          "tolerance": 0.01,
+          "message": "For 0 N loss, the rudder must oppose the nose-right disturbance. Its signed balance moment must be 0 N m.",
+          "actual": 0,
+          "passed": true
+        },
+        {
+          "studentExpression": "rudderEquation",
+          "variables": {
+            "deltaT": 2400
+          },
+          "expected": -7440,
+          "tolerance": 0.01,
+          "message": "For 2400 N loss, the rudder must oppose the nose-right disturbance. Its signed balance moment must be -7440 N m.",
+          "actual": -7440,
+          "passed": true
+        },
+        {
+          "studentExpression": "rudderEquation",
+          "variables": {
+            "deltaT": 4800
+          },
+          "expected": -14880,
+          "tolerance": 0.01,
+          "message": "For 4800 N loss, the rudder must oppose the nose-right disturbance. Its signed balance moment must be -14880 N m.",
+          "actual": -14880,
+          "passed": true
+        }
+      ],
+      "traces": [
+        {
+          "x": 0,
+          "supplied": 0,
+          "reference": 8600
+        },
+        {
+          "x": 1200,
+          "supplied": 3720,
+          "reference": 8600
+        },
+        {
+          "x": 2400,
+          "supplied": 7440,
+          "reference": 8600
+        },
+        {
+          "x": 3600,
+          "supplied": 11160,
+          "reference": 8600
+        },
+        {
+          "x": 4800,
+          "supplied": 14880,
+          "reference": 8600
+        }
+      ]
+    }
+  },
+  "history": [],
+  "caseDrafts": {},
+  "attempts": [
+    {
+      "id": "869ce6fc-5537-401b-ba22-112290995035",
+      "missionVersion": "3.1.0",
+      "answerSnapshot": "{\"equation\":\"deltaT * y\",\"rudderEquation\":\"- deltaT * y\",\"effector\":\"Rudder / vertical tail\",\"explanation1\":\"The engine-out disturbance and rudder moment must have opposite signs because only an opposing moment can cancel the disturbance and bring the net yaw moment to zero — matching signs would add to the disturbance instead of balancing it.\"}",
+      "at": "2026-09-13T04:17:15.066Z",
+      "result": {
+        "runnable": true,
+        "passed": true,
+        "checks": [
+          {
+            "studentExpression": "equation",
+            "variables": {
+              "deltaT": 0
+            },
+            "expected": 0,
+            "message": "Lost thrust 0 N at 3.1 m must give 0 N m signed nose-right disturbance.",
+            "tolerance": 0.0001,
+            "actual": 0,
+            "passed": true
+          },
+          {
+            "studentExpression": "equation",
+            "variables": {
+              "deltaT": 2400
+            },
+            "expected": 7440,
+            "message": "Lost thrust 2400 N at 3.1 m must give 7440 N m signed nose-right disturbance.",
+            "tolerance": 0.01,
+            "actual": 7440,
+            "passed": true
+          },
+          {
+            "studentExpression": "equation",
+            "variables": {
+              "deltaT": 4800
+            },
+            "expected": 14880,
+            "message": "Lost thrust 4800 N at 3.1 m must give 14880 N m signed nose-right disturbance.",
+            "tolerance": 0.01,
+            "actual": 14880,
+            "passed": true
+          },
+          {
+            "field": "effector",
+            "expected": "Rudder / vertical tail",
+            "message": "Check which control surface primarily controls yaw. This check does not assess your written explanation.",
+            "tolerance": 0.000001,
+            "actual": "Rudder / vertical tail",
+            "passed": true
+          },
+          {
+            "studentExpression": "rudderEquation",
+            "variables": {
+              "deltaT": 0
+            },
+            "expected": 0,
+            "tolerance": 0.01,
+            "message": "For 0 N loss, the rudder must oppose the nose-right disturbance. Its signed balance moment must be 0 N m.",
+            "actual": 0,
+            "passed": true
+          },
+          {
+            "studentExpression": "rudderEquation",
+            "variables": {
+              "deltaT": 2400
+            },
+            "expected": -7440,
+            "tolerance": 0.01,
+            "message": "For 2400 N loss, the rudder must oppose the nose-right disturbance. Its signed balance moment must be -7440 N m.",
+            "actual": -7440,
+            "passed": true
+          },
+          {
+            "studentExpression": "rudderEquation",
+            "variables": {
+              "deltaT": 4800
+            },
+            "expected": -14880,
+            "tolerance": 0.01,
+            "message": "For 4800 N loss, the rudder must oppose the nose-right disturbance. Its signed balance moment must be -14880 N m.",
+            "actual": -14880,
+            "passed": true
+          }
+        ],
+        "traces": [
+          {
+            "x": 0,
+            "supplied": 0,
+            "reference": 8600
+          },
+          {
+            "x": 1200,
+            "supplied": 3720,
+            "reference": 8600
+          },
+          {
+            "x": 2400,
+            "supplied": 7440,
+            "reference": 8600
+          },
+          {
+            "x": 3600,
+            "supplied": 11160,
+            "reference": 8600
+          },
+          {
+            "x": 4800,
+            "supplied": 14880,
+            "reference": 8600
+          }
+        ]
+      }
+    }
+  ],
+  "view": {
+    "caseId": "0"
+  }
+}
