@@ -1,0 +1,337 @@
+{
+  "answer": {
+    "output": "Available minus required control moment",
+    "unit": "N m",
+    "threshold": "0",
+    "control": "Insufficient authority",
+    "explanation3": "Available minus required moment (margin) directly compares what the elevator can produce with what the maneuver requires—a positive or zero margin means sufficient control, while a negative margin means insufficient. Zero starting moment (trim) only confirms the aircraft is currently balanced with no additional input; it says nothing about how much extra control moment is actually available when a response is commanded. A trimmed, stable aircraft can still lack enough control authority to execute a specific maneuver, exactly as shown here: trim and stability indicators can both look fine while the control margin is negative."
+  },
+  "reflection": {
+    "confirmedFor": "1a66aabe-25df-43d4-a0d4-133bb4919420",
+    "observation": "At 800 N m available, the control margin was −550 N m — insufficient authority. At 1,350 N m, the margin was exactly 0 N m, meeting the requirement inclusively. At 2,000 N m, the margin was +650 N m, comfortably exceeding the requirement. Across all three cases, trim (0 N m reference net moment) and static restoring tendency (−0.6 per rad) stayed completely unchanged — only the control margin changed as available moment increased.",
+    "change": "I confirmed that trim and static stability are separate questions from control authority, and that neither one predicts whether a specific control demand can be met. Even though the aircraft was trimmed and statically stable in every case, only the direct comparison of available versus required moment (margin) determined whether the 1,350 N m demand could actually be satisfied.",
+    "limit": "\"Even with a positive margin, I would need the aircraft's pitch moment of inertia (Iy) to convert the margin into an actual angular acceleration, then integrate that acceleration over time to find how pitch rate and pitch angle evolve.",
+    "result": "supported"
+  },
+  "attempt": {
+    "id": "1a66aabe-25df-43d4-a0d4-133bb4919420",
+    "missionVersion": "3.0.0",
+    "answerSnapshot": "{\"output\":\"Available minus required control moment\",\"unit\":\"N m\",\"threshold\":\"0\",\"control\":\"Insufficient authority\",\"explanation3\":\"Available minus required moment (margin) directly compares what the elevator can produce with what the maneuver requires—a positive or zero margin means sufficient control, while a negative margin means insufficient. Zero starting moment (trim) only confirms the aircraft is currently balanced with no additional input; it says nothing about how much extra control moment is actually available when a response is commanded. A trimmed, stable aircraft can still lack enough control authority to execute a specific maneuver, exactly as shown here: trim and stability indicators can both look fine while the control margin is negative.\"}",
+    "at": "2026-09-13T07:53:46.821Z",
+    "result": {
+      "runnable": true,
+      "passed": true,
+      "checks": [
+        {
+          "field": "output",
+          "expected": "Available minus required control moment",
+          "message": "Use the control comparison, not the trim or stability indicator.",
+          "tolerance": 0.000001,
+          "actual": "Available minus required control moment",
+          "passed": true
+        },
+        {
+          "field": "unit",
+          "expected": "N m",
+          "message": "Compare compatible moments.",
+          "tolerance": 0.000001,
+          "actual": "N m",
+          "passed": true
+        },
+        {
+          "field": "threshold",
+          "expected": 0,
+          "message": "Equality satisfies the inclusive requirement.",
+          "tolerance": 0.0001,
+          "actual": "0",
+          "passed": true
+        },
+        {
+          "field": "control",
+          "expected": "Insufficient authority",
+          "message": "The -550 N m margin remains negative despite trim and restoring tendency.",
+          "tolerance": 0.000001,
+          "actual": "Insufficient authority",
+          "passed": true
+        }
+      ],
+      "traces": [
+        {
+          "x": 400,
+          "supplied": -950,
+          "reference": 0
+        },
+        {
+          "x": 800,
+          "supplied": -550,
+          "reference": 0
+        },
+        {
+          "x": 1350,
+          "supplied": 0,
+          "reference": 0
+        },
+        {
+          "x": 2000,
+          "supplied": 650,
+          "reference": 0
+        }
+      ]
+    }
+  },
+  "history": [],
+  "caseDrafts": {
+    "800": {
+      "evidence": "-550",
+      "conclusion": "Insufficient authority",
+      "note": "At 800 N m available, the control margin is exactly -550 N m, which does not meets the requirement."
+    },
+    "1350": {
+      "conclusion": "Requirement met",
+      "evidence": "0",
+      "note": "At 1,350 N m available, the control margin is exactly 0 N m (1350 − 1350 = 0), which meets the requirement since equality satisfies the inclusive threshold. "
+    },
+    "2000": {
+      "evidence": "650",
+      "conclusion": "Requirement met",
+      "note": "At 2000 N m available, the control margin is exactly 650 N m, which exceeds the requirement."
+    }
+  },
+  "attempts": [
+    {
+      "id": "1a66aabe-25df-43d4-a0d4-133bb4919420",
+      "missionVersion": "3.0.0",
+      "answerSnapshot": "{\"output\":\"Available minus required control moment\",\"unit\":\"N m\",\"threshold\":\"0\",\"control\":\"Insufficient authority\",\"explanation3\":\"Available minus required moment (margin) directly compares what the elevator can produce with what the maneuver requires—a positive or zero margin means sufficient control, while a negative margin means insufficient. Zero starting moment (trim) only confirms the aircraft is currently balanced with no additional input; it says nothing about how much extra control moment is actually available when a response is commanded. A trimmed, stable aircraft can still lack enough control authority to execute a specific maneuver, exactly as shown here: trim and stability indicators can both look fine while the control margin is negative.\"}",
+      "at": "2026-09-13T07:53:46.821Z",
+      "result": {
+        "runnable": true,
+        "passed": true,
+        "checks": [
+          {
+            "field": "output",
+            "expected": "Available minus required control moment",
+            "message": "Use the control comparison, not the trim or stability indicator.",
+            "tolerance": 0.000001,
+            "actual": "Available minus required control moment",
+            "passed": true
+          },
+          {
+            "field": "unit",
+            "expected": "N m",
+            "message": "Compare compatible moments.",
+            "tolerance": 0.000001,
+            "actual": "N m",
+            "passed": true
+          },
+          {
+            "field": "threshold",
+            "expected": 0,
+            "message": "Equality satisfies the inclusive requirement.",
+            "tolerance": 0.0001,
+            "actual": "0",
+            "passed": true
+          },
+          {
+            "field": "control",
+            "expected": "Insufficient authority",
+            "message": "The -550 N m margin remains negative despite trim and restoring tendency.",
+            "tolerance": 0.000001,
+            "actual": "Insufficient authority",
+            "passed": true
+          }
+        ],
+        "traces": [
+          {
+            "x": 400,
+            "supplied": -950,
+            "reference": 0
+          },
+          {
+            "x": 800,
+            "supplied": -550,
+            "reference": 0
+          },
+          {
+            "x": 1350,
+            "supplied": 0,
+            "reference": 0
+          },
+          {
+            "x": 2000,
+            "supplied": 650,
+            "reference": 0
+          }
+        ]
+      }
+    }
+  ],
+  "view": {
+    "caseId": "2000"
+  },
+  "interpretations": {
+    "800": [
+      {
+        "correct": true,
+        "feedback": "Your recorded value and choice match the calculation: Insufficient authority. Control margin: -550 N m. -550 < 0 Your instructor will review your explanation.",
+        "attemptId": "1a66aabe-25df-43d4-a0d4-133bb4919420",
+        "at": "2026-09-13T07:58:36.898Z",
+        "conclusion": "Insufficient authority",
+        "evidence": "-550",
+        "note": "At 800 N m available, the control margin is exactly -550 N m, which does not meets the requirement.",
+        "draftSnapshot": "{\"evidence\":\"-550\",\"conclusion\":\"Insufficient authority\",\"note\":\"At 800 N m available, the control margin is exactly -550 N m, which does not meets the requirement.\"}"
+      }
+    ],
+    "1350": [
+      {
+        "correct": true,
+        "feedback": "Your recorded value and choice match the calculation: Requirement met. Control margin: 0 N m. 0 = 0 Your instructor will review your explanation.",
+        "attemptId": "1a66aabe-25df-43d4-a0d4-133bb4919420",
+        "at": "2026-09-13T07:57:19.183Z",
+        "conclusion": "Requirement met",
+        "evidence": "0",
+        "note": "At 1,350 N m available, the control margin is exactly 0 N m (1350 − 1350 = 0), which meets the requirement since equality satisfies the inclusive threshold. ",
+        "draftSnapshot": "{\"conclusion\":\"Requirement met\",\"evidence\":\"0\",\"note\":\"At 1,350 N m available, the control margin is exactly 0 N m (1350 − 1350 = 0), which meets the requirement since equality satisfies the inclusive threshold. \"}"
+      }
+    ],
+    "2000": [
+      {
+        "correct": true,
+        "feedback": "Your recorded value and choice match the calculation: Requirement met. Control margin: 650 N m. 650 > 0 Your instructor will review your explanation.",
+        "attemptId": "1a66aabe-25df-43d4-a0d4-133bb4919420",
+        "at": "2026-09-13T07:59:48.274Z",
+        "conclusion": "Requirement met",
+        "evidence": "650",
+        "note": "At 2000 N m available, the control margin is exactly 650 N m, which exceeds the requirement.",
+        "draftSnapshot": "{\"evidence\":\"650\",\"conclusion\":\"Requirement met\",\"note\":\"At 2000 N m available, the control margin is exactly 650 N m, which exceeds the requirement.\"}"
+      }
+    ]
+  },
+  "observations": {
+    "800": {
+      "attemptId": "1a66aabe-25df-43d4-a0d4-133bb4919420",
+      "at": "2026-09-13T07:58:36.898Z",
+      "note": "At 800 N m available, the control margin is exactly -550 N m, which does not meets the requirement.",
+      "evidence": "-550",
+      "conclusion": "Insufficient authority",
+      "readouts": [
+        {
+          "label": "Trim: reference net moment",
+          "expression": "0",
+          "unit": "N m",
+          "value": 0
+        },
+        {
+          "label": "Static restoring derivative",
+          "expression": "-0.6",
+          "unit": "per rad",
+          "value": -0.6
+        },
+        {
+          "label": "Available control moment",
+          "expression": "available",
+          "unit": "N m",
+          "value": 800
+        },
+        {
+          "label": "Required control moment",
+          "expression": "required",
+          "unit": "N m",
+          "value": 1350
+        },
+        {
+          "label": "Control margin",
+          "expression": "available-required",
+          "unit": "N m",
+          "value": -550
+        }
+      ],
+      "inputs": {
+        "available": 800
+      }
+    },
+    "1350": {
+      "attemptId": "1a66aabe-25df-43d4-a0d4-133bb4919420",
+      "at": "2026-09-13T07:57:19.183Z",
+      "note": "At 1,350 N m available, the control margin is exactly 0 N m (1350 − 1350 = 0), which meets the requirement since equality satisfies the inclusive threshold. ",
+      "evidence": "0",
+      "conclusion": "Requirement met",
+      "readouts": [
+        {
+          "label": "Trim: reference net moment",
+          "expression": "0",
+          "unit": "N m",
+          "value": 0
+        },
+        {
+          "label": "Static restoring derivative",
+          "expression": "-0.6",
+          "unit": "per rad",
+          "value": -0.6
+        },
+        {
+          "label": "Available control moment",
+          "expression": "available",
+          "unit": "N m",
+          "value": 1350
+        },
+        {
+          "label": "Required control moment",
+          "expression": "required",
+          "unit": "N m",
+          "value": 1350
+        },
+        {
+          "label": "Control margin",
+          "expression": "available-required",
+          "unit": "N m",
+          "value": 0
+        }
+      ],
+      "inputs": {
+        "available": 1350
+      }
+    },
+    "2000": {
+      "attemptId": "1a66aabe-25df-43d4-a0d4-133bb4919420",
+      "at": "2026-09-13T07:59:48.274Z",
+      "note": "At 2000 N m available, the control margin is exactly 650 N m, which exceeds the requirement.",
+      "evidence": "650",
+      "conclusion": "Requirement met",
+      "readouts": [
+        {
+          "label": "Trim: reference net moment",
+          "expression": "0",
+          "unit": "N m",
+          "value": 0
+        },
+        {
+          "label": "Static restoring derivative",
+          "expression": "-0.6",
+          "unit": "per rad",
+          "value": -0.6
+        },
+        {
+          "label": "Available control moment",
+          "expression": "available",
+          "unit": "N m",
+          "value": 2000
+        },
+        {
+          "label": "Required control moment",
+          "expression": "required",
+          "unit": "N m",
+          "value": 1350
+        },
+        {
+          "label": "Control margin",
+          "expression": "available-required",
+          "unit": "N m",
+          "value": 650
+        }
+      ],
+      "inputs": {
+        "available": 2000
+      }
+    }
+  }
+}
